@@ -11,10 +11,11 @@ while(true) {
 
 	// Switch statements to play the game or not	
 	switch(menu) {
-		// 
+		// Exit the app
 		case 0:
 			Console.WriteLine("Good game, thanks for playing!");
 			return;
+		// Play the game
 		case 1:
 			// Instantiate random number generator
 			var rand = new Random();
@@ -23,7 +24,7 @@ while(true) {
 			int number = rand.Next(11);
 			//Console.WriteLine(number);
 
-
+			// Ask user for a number
 			while(true) {	
 				// User prompt
 				Console.WriteLine("Guess a number between 0 and 10: ");		
@@ -46,7 +47,8 @@ while(true) {
 				}
 			}
 			break;
-
+		
+		// If input is not 0 or 1
 		default:
 			Console.WriteLine("Invalid input!");
 			break;		
