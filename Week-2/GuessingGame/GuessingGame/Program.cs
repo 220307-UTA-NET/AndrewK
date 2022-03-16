@@ -58,8 +58,20 @@ namespace GuessingGame {
 			while(true) {	
 				// User prompt
 				Console.WriteLine("Guess a number between 0 and 10: ");		
-				// Read user input from the console then parse into an int data type variable
-				int input = int.Parse(Console.ReadLine());
+
+				// Try-Catch Block
+				int input;
+				try {
+					// Read user input from the console then parse into an int data type variable
+					input = int.Parse(Console.ReadLine());
+				}
+				catch (System.Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+					//Console.WriteLine("Bad input detected. Returning to menu.");
+					break;
+				}
+
 				Console.WriteLine("You guessed " + input);
 
 				// If the user guessed the correct number 
@@ -98,9 +110,23 @@ namespace GuessingGame {
 				Console.WriteLine(num1 + " + " + num2 + " = ?");
 				Console.Write("Enter your answer: ");
 
-				int userGuess = int.Parse(Console.ReadLine());	// Accepting the users solution
+				// Unit Test
+				string userGuess = Console.ReadLine();
+				int intUserGuess;
 
-				if(solution == userGuess) {
+				bool success = int.TryParse(userGuess, out intUserGuess);	// Accepting the users solution
+
+				if(success)
+				{
+					intUserGuess = int.Parse(userGuess);
+				}
+				else
+				{
+					Console.WriteLine("Invalid input. Exiting Addition Challenge.");
+					break;
+				}
+
+				if(solution == intUserGuess) {
 					Console.WriteLine("You got it!");
 					
 					// Prompt to clear the screen
@@ -111,7 +137,7 @@ namespace GuessingGame {
 					break;
 				}
 				else {
-					Console.WriteLine("Not quite, you were off by: " + Math.Abs(solution - userGuess));
+					Console.WriteLine("Not quite, you were off by: " + Math.Abs(solution - intUserGuess));
 				}
 			}
 		}
