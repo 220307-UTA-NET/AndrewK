@@ -28,7 +28,7 @@ namespace StringManipulationChallenge
         // 2) print the result to the console and 
         // 3) return the new string.
         public static string StringToUpper(string x){
-            string upper = x.toUpper();
+            string upper = x.ToUpper();
             return upper;
             //throw new NotImplementedException("StringToUpper method not implemented.");
         }
@@ -39,7 +39,9 @@ namespace StringManipulationChallenge
         // 2) print the result to the console and 
         // 3) return the new string.        
         public static string StringToLower(string x){
-            throw new NotImplementedException("StringToUpper method not implemented.");
+            string lower = x.ToLower();
+            return lower;
+            //throw new NotImplementedException("StringToUpper method not implemented.");
 
         }
         
@@ -49,7 +51,9 @@ namespace StringManipulationChallenge
         // 2) print the result to the console and 
         // 3) return the new string.
         public static string StringTrim(string x){
-            throw new NotImplementedException("StringTrim method not implemented.");
+            string trim = x.Trim();
+            return trim;
+            //throw new NotImplementedException("StringTrim method not implemented.");
 
         }
         
@@ -59,7 +63,9 @@ namespace StringManipulationChallenge
         // 2) print the result to the console and 
         // 3) return the new string.
         public static string StringSubstring(string x, int elementNum){
-            throw new NotImplementedException("StringSubstring method not implemented.");
+            string subs = x.Substring(elementNum);
+            return subs;
+            //throw new NotImplementedException("StringSubstring method not implemented.");
 
         }
 
@@ -68,7 +74,7 @@ namespace StringManipulationChallenge
         // 1) search the string parameter for the char parameter
         // 2) return the index of the char.
         public static int SearchChar(string userInputString, char x){
-            int pos = userInputString.indexOf(x);
+            int pos = userInputString.IndexOf(x);
             return pos;
             //throw new NotImplementedException("SearchChar method not implemented.");
         }
@@ -78,7 +84,9 @@ namespace StringManipulationChallenge
         // 1) concatenate the two strings with a space between them.
         // 2) return the new string.
         public static string ConcatNames(string fName, string lName){
-            throw new NotImplementedException("ConcatNames method not implemented.");
+            string concat = (fName + " " + lName);
+            return concat;
+            //throw new NotImplementedException("ConcatNames method not implemented.");
         }
 
 
