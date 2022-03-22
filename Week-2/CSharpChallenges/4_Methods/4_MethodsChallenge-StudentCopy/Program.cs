@@ -23,25 +23,51 @@ namespace _4_MethodsChallenge
 
         public static string GetName()
         {
-            throw new NotImplementedException();
+            string name = Console.ReadLine();
+            return name;
+            //throw new NotImplementedException();
         }
 
         public static void GreetFriend(string name)
         {
             //Greeting should be: Hello, nameVar. You are my friend
             //Ex: Hello, Jim. You are my friend
-            throw new NotImplementedException();
+            string text = "Hello " + name + ". You are my friend";
+            return text;
+            //throw new NotImplementedException();
         }
 
         public static double GetNumber()
         {
             //Should throw FormatException if the user did not input a number
-            throw new NotImplementedException();
+            try
+            {
+                double number = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException ex)
+            {
+                throw ex;
+            }
+
+            return number;
+            //throw new NotImplementedException();
         }
 
         public static int GetAction()
         {
-            throw new NotImplementedException();
+            int input;
+            while(true)
+            {
+                Console.WriteLine("Enter: 1)add, 2)subtract, 3)multiply, or 4)divide");
+
+                switch (input) 
+                {
+                    case(1):
+
+
+                }
+            }
+            //throw new NotImplementedException();
         }
 
         public static double DoAction(double x, double y, int z)
