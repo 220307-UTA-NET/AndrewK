@@ -1,0 +1,4 @@
+Wednesday, March 23, 2022 10:01:11 AM	123456	Personal Savings	-1500	1000.75
+Wednesday, March 23, 2022 10:01:12 AM	123456	Personal Savings	123	1123.75
+Wednesday, March 23, 2022 10:01:12 AM	123457	Personal Checking	-200	50
+Wednesday, March 23, 2022 10:01:12 AM	123457	Personal Checking	200	250
