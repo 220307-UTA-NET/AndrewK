@@ -1,8 +1,8 @@
 using System.Xml.Serialization;
 
-namespace BankAccounts
+namespace BankAccounts.App
 {
-    class Account
+    public class Account
     //abstract class Account
     // abstract class objects cannot be created.
     {
@@ -50,6 +50,11 @@ namespace BankAccounts
         public double GetInterestRate()
         {
             return this.interestRate;
+        }
+
+        public int GetTransactionsCount()
+        {
+            return this.allTransactions.Count;
         }
 
         // abstract methods do not need a body because it will be overridden later on.
@@ -119,9 +124,9 @@ namespace BankAccounts
         // Method to serialize List of Transaction object using a StringWriter
         public void SerializeAsXml()
         {
-            var newStringWriter = new StringWriter();
+            var newStringWriter = new StringWriter();   // Create a Stream of StringWriter
             Serializer.Serialize(newStringWriter, allTransactions); // This is the conversion into Xml
-            newStringWriter.Close();
+            newStringWriter.Close();    // CLose the Stream of StringWriter
 
             string path = $"./Transactions-{this.accountNumber}.xml";
             File.WriteAllText(path, newStringWriter.ToString());

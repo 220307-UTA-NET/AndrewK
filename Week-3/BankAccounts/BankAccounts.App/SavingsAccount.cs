@@ -1,18 +1,18 @@
-namespace BankAccounts
+namespace BankAccounts.App
 {
-    class CheckingAccount : Account
+    public class SavingsAccount : Account
     {
-        //Fields
-        double interestRate = 0.000;
+        // Fields
 
         // Constructors
-        public CheckingAccount(string accountName, double accountBalance)
-        //public CheckingAccount(string accountName, int accountNumber, double accountBalance)
+        public SavingsAccount(string accountName, double accountBalance)
+        //public SavingsAccount(string accountName, int accountNumber, double accountBalance)
         {
             this.accountName = accountName;
             //this.accountNumber = accountNumber;
             //this.accountBalance = accountBalance;
             this.Deposit(accountBalance, "First Deposit:");
+            this.interestRate = 0.003;
         }
 
         // Methods
@@ -34,7 +34,7 @@ namespace BankAccounts
         //     {
         //         this.accountBalance -= amount;
         //         this.Record(-amount);
-        //     }        
+        //     }
         // }
 
         // public override void Deposit(double amount)
@@ -51,5 +51,12 @@ namespace BankAccounts
         //         this.Record(amount);
         //     }
         // }
+
+        public void ApplyInterest()
+        {
+            //this.accountBalance += Math.Round((this.accountBalance * interestRate), 2);
+            this.Deposit(Math.Round((this.accountBalance * interestRate), 2), "Interest payment.");
+        }
+
     }
 }

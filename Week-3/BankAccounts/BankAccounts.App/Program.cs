@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BankAccounts
+namespace BankAccounts.App
 {
     class Program
     {
