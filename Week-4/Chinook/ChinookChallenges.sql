@@ -98,3 +98,64 @@ ORDER BY Sum_Total DESC;
 
 -- Which customers have the same initials as at least one other customer?
 -- ???
+
+
+-- solve these with a mixture of joins, subqueries, CTE, and set operators.
+-- solve at least one of them in two different ways, and see if the execution
+-- plan for them is the same, or different.
+
+-- 1. which artists did not make any albums at all?
+SELECT Artist.Name
+FROM Artist 
+WHERE ArtistId NOT IN (SELECT ArtistId FROM Album)
+
+-- 2. which artists did not record any tracks of the Latin genre?
+SELECT COUNT(DISTINCT Artist.Name)
+FROM Track
+JOIN Album on Track.AlbumId = Album.AlbumId
+JOIN Artist on Album.ArtistId = Artist.ArtistId
+JOIN Genre on Track.GenreId = Genre.GenreId
+WHERE Genre.Name != 'Latin';
+
+-- 3. which video track has the longest length? (use media type table)
+SELECT * FROM MediaType
+JOIN Track ON Track.MediaTypeId = MediaType.MediaTypeId
+WHERE Track.Milliseconds = (SELECT MAX(Track.Milliseconds) FROM Track);
+
+-- 4. find the names of the customers who live in the same city as the
+--    boss employee (the one who reports to nobody)
+SELECT * FROM Customer
+WHERE Customer.City = (SELECT Employee.City FROM Employee 
+    WHERE Employee.ReportsTo IS NULL);
+
+-- 5. how many audio tracks were bought by German customers, and what was
+--    the total price paid for them?
+
+/*
+SELECT SUM(Total) FROM Invoice
+WHERE CustomerId IN (SELECT CustomerId FROM Customer
+    WHERE Country = 'Germany'
+);
+*/
+
+SELECT * FROM Track
+SELECT * FROM Customer
+
+-- 6. list the names and countries of the customers supported by an employee
+--    who was hired younger than 35.
+SELECT FirstName, LastName, Country FROM Customer
+WHERE SupportRepId IN (SELECT EmployeeId FROM Employee
+    WHERE (YEAR(HireDate) - YEAR(BirthDate)) < 35
+);
+
+-- DML exercises
+
+-- 1. insert two new records into the employee table.
+
+-- 2. insert two new records into the tracks table.
+
+-- 3. update customer Aaron Mitchell's name to Robert Walter
+
+-- 4. delete one of the employees you inserted.
+
+-- 5. delete customer Robert Walter.

@@ -92,3 +92,56 @@ INNER JOIN Genre AS g ON g.GenreId = t.GenreId
 JOIN ALBUM AS al ON t.AlbumId = al.AlbumId
 JOIN Artist AS ar ON al.ArtistId = ar.ArtistId
 WHERE g.Name = 'Rock';
+
+-- Set operations
+-- Set operations let us run multiple queries as a single query
+
+-- All first names of employees and customers
+SELECT FirstName 
+FROM Employee
+UNION ALL
+SELECT FirstName
+FROM Customer;
+-- UNION returns all entries that are found on either query, wihout duplicates.
+-- UNION ALL, with duplicates (a little faster, but could have more data).
+
+-- Names that are both a customer and an employee
+SELECT FirstName 
+FROM Employee
+INTERSECT
+SELECT FirstName
+FROM Customer;
+-- INTERSECT returns all entries that are in both queries (without duplicates).
+
+-- Names that are employees but not customers
+SELECT FirstName 
+FROM Employee
+EXCEPT
+SELECT FirstName
+FROM Customer;
+-- EXCEPT returns entries that match the first query, and are not matched in the second query.
+-- ORDER MATTERS for EXCEPT!
+
+-- To use a set operator, the queries must return the same type and number of columns.
+
+-- Sub-Query
+-- It is sometimes easier to express a complex idea as two queries that work sequentially
+
+-- The artist who maed the album with the longest title
+SELECT *
+FROM Artist ar
+WHERE ArtistId = (
+    SELECT ArtistId
+    FROM Album
+    WHERE LEN(Title) >= ALL (
+        SELECT LEN(Title)
+        FROM Album)
+);
+
+-- Returns all tracks that were never purchased
+SELECT * 
+FROM Track 
+WHERE TrackId NOT IN (SELECT TrackId FROM InvoiceLine);
+-- Queries operate from the most-nested to the least-nested query
+-- Operators for Subqueries:
+-- IN, NOT IN, EXISTS, ANY, ALL
