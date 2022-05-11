@@ -1,0 +1,28 @@
+table
+{
+    background-color: darksalmon;
+}
+
+#firstname
+{
+    /*The # sign indicates that we are targeting a specific id for an element*/
+    border-top-color: black;
+}
+
+#boxmodel
+{
+    /*The outermost layer of the box model is the margin.*/
+    margin:50px;
+    /*The next layer is the border, this is what the limit of the element.*/
+    border:5px solid black;
+    /*The next layer is the padding, this is the space between the border and the content.*/
+    padding:10px;
+
+}
+
+div
+{
+    margin: 25% 10%;
+    border: 1px solid black;
+    padding: 5px;
+}

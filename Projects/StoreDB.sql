@@ -1,7 +1,7 @@
 CREATE SCHEMA Store;
 GO
 
---DROP SCHEMA IF EXISTS Store;
+DROP SCHEMA IF EXISTS Store;
 
 CREATE TABLE Store.Inventory (
     ItemId INT NOT NULL PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE Store.Inventory (
     Price NUMERIC(10,2) NOT NULL
 );
 
---DROP TABLE Store.Inventory;
+DROP TABLE Store.Inventory;
 
 CREATE TABLE Store.Customer (
     CustomerId INT NOT NULL PRIMARY KEY IDENTITY,
@@ -25,7 +25,7 @@ CREATE TABLE Store.Customer (
     Phone NVARCHAR(24)
 );
 
---DROP TABLE Store.Customer;
+DROP TABLE Store.Customer;
 
 CREATE TABLE Store.Location (
     StoreId INT NOT NULL PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE Store.Location (
     Phone NVARCHAR(24),
 );
 
---DROP TABLE Store.Location;
+DROP TABLE Store.Location;
 
 CREATE TABLE Store.Invoice (
     InvoiceId INT NOT NULL PRIMARY KEY IDENTITY,
@@ -49,7 +49,7 @@ CREATE TABLE Store.Invoice (
     Total NUMERIC(10,2) NOT NULL
 );
 
---DROP TABLE Store.Invoice;
+DROP TABLE Store.Invoice;
 
 ALTER TABLE Store.Invoice
 DROP CONSTRAINT FK__Invoice__Custome__7755B73D;
@@ -114,7 +114,7 @@ VALUES
     (2, '2345 Address2', 'City2', 'State2', 'Country2', '22222', '2345678901'),
     (3, '3456 Address3', 'City3', 'State3', 'Country3', '33333', '3456789012');
 
---DELETE FROM Store.Customer WHERE FirstName = 'andrew';
+DELETE FROM Store.Customer WHERE FirstName = 'andrew';
 
 INSERT INTO Store.Invoice (CustomerId, StoreId, InvoiceDate, Total)
 VALUES
@@ -130,37 +130,37 @@ VALUES
     (6, 1, GETDATE(), 101.00),
     (7, 3, GETDATE(), 22.00);    
 
---UPDATE Store.Inventory
---SET Price = 300.99
---WHERE ItemId = 3;    
+UPDATE Store.Inventory
+SET Price = 300.99
+WHERE ItemId = 3;    
 
---UPDATE Store.Inventory
---SET Quantity = Quantity - 1
---WHERE ItemId = 1;
+UPDATE Store.Inventory
+SET Quantity = Quantity - 1
+WHERE ItemId = 1;
 
---SELECT TOP 1 *
---FROM Store.Invoice
---ORDER BY InvoiceId DESC;
+SELECT TOP 1 *
+FROM Store.Invoice
+ORDER BY InvoiceId DESC;
 
 -- Selecting non-existent customer
---SELECT * FROM Store.Customer
---WHERE FirstName = 'hello';
+SELECT * FROM Store.Customer
+WHERE FirstName = 'hello';
 
---SELECT *
---FROM Store.Invoice
---WHERE CustomerId = 13;
+SELECT *
+FROM Store.Invoice
+WHERE CustomerId = 13;
 
---SELECT *
---FROM Store.Customer;
+SELECT *
+FROM Store.Customer;
 
---DELETE FROM Store.Customer
---WHERE FirstName = '';
+DELETE FROM Store.Customer
+WHERE FirstName = '';
 
---INSERT INTO Store.Customer (FirstName, LastName)
---VALUES ('bb', 'cc');
+INSERT INTO Store.Customer (FirstName, LastName)
+VALUES ('bb', 'cc');
 
---DELETE FROM Store.Customer
---WHERE FirstName = 'bb' AND LastName = 'cc';
+DELETE FROM Store.Customer
+WHERE FirstName = 'bb' AND LastName = 'cc';
 
 SELECT * FROM Store.Customer;
 SELECT * FROM Store.Inventory;
